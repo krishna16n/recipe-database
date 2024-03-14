@@ -7,11 +7,30 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// schema.prisma
 
+// Define the User model with UUID for the ID field
 model User {
-  id    String  @unique @default(uuid()) 
-  email String  @unique
-  hashedPassword String 
-  createdAt DateTime @default(now())
-  updateAt DateTime @updatedAt()
+  // UUID type for the unique identifier
+  id             String   @id @default(uuid())
+  email          String   @unique
+  hashedPassword String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  // Define the relation to Recipe model
+  recipes        Recipe[] @relation("author")
+}
+
+// Define the Recipe model
+model Recipe {
+  id           String   @id @default(uuid())
+  title        String
+  description  String?
+  ingredients  String[]
+  instructions String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  // Define the relation to User model
+  author       User     @relation("author", fields: [authorId], references: [id])
+  authorId     String // Field to store the ID of the user who created the recipe
 }
