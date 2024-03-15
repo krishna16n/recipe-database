@@ -59,4 +59,14 @@ export class RecipesController {
   deleteRecipe(@Param() params: { id: string }) {
     return this.recipesService.deleteRecipe(params.id);
   }
+
+  /**
+   * Retrieves a recipe by user ID.
+   * @param params - Object containing the user ID.
+   * @returns The recipe with the specified ID.
+   */
+  @Get('user/:userId')
+  async getRecipesByUserId(@Param() params: { id: string }) {
+    return this.recipesService.getRecipesByUserId(params.id);
+  }
 }
