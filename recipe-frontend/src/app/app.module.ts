@@ -20,33 +20,35 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { SignupComponent } from './pages/signup/signup.component';
+import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    LayoutComponent,
-    LoginComponent,
-    SignupComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatCardModule,
-    MatListModule,
-    MatButtonModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-  ],
-  providers: [
-    provideAnimationsAsync(),
-    provideHttpClient(withInterceptors([authInterceptor]))
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        DashboardComponent,
+        LayoutComponent,
+        LoginComponent,
+        SignupComponent
+    ],
+    providers: [
+        provideAnimationsAsync(),
+        provideHttpClient(withInterceptors([authInterceptor]))
+    ],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NgbModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatCardModule,
+        MatListModule,
+        MatButtonModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatInputModule,
+        SharedModule,
+    ]
 })
 export class AppModule { }

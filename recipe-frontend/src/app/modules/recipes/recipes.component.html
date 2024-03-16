@@ -1,16 +1,15 @@
 <div class="container">
-  <mat-card class="card-container" *ngIf="!!recipes">
-    <mat-card-content>
-      <mat-list role="list">
-        <mat-list-item role="listitem" *ngFor="let item of recipes">
-          {{ item.title }}
-          <a mat-raised-button routerLink="{{ item.id }}">Edit</a>
-        </mat-list-item>
-      </mat-list>
-    </mat-card-content>
-    <mat-card-actions>
-      <a mat-raised-button color="primary" routerLink="create">Create</a>
-    </mat-card-actions>
-  </mat-card>
-  <!-- <mat-spinner></mat-spinner> -->
+  <a mat-raised-button routerLink="create" class="mt-4">
+    Add Recipe <mat-icon>post_add</mat-icon>
+  </a>
+
+  <div class="container mt-3">
+    <div class="card-container" *ngIf="!!recipes">
+      <div *ngFor="let item of recipes">
+        <div class="mb-4">
+          <recipe-card [data]="item"></recipe-card>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

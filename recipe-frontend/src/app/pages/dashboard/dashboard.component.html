@@ -1,12 +1,9 @@
-<div class="container">
-    <mat-card class="card-container" *ngIf="!!recipes">
-      <mat-card-content>
-        <mat-list role="list">
-          <mat-list-item role="listitem" *ngFor="let item of recipes">
-            {{ item.title }}
-            <a mat-raised-button routerLink="/recipes/{{ item.id }}">View</a>
-          </mat-list-item>
-        </mat-list>
-      </mat-card-content>
-    </mat-card>
-  </div>
+<div class="container mt-3">
+    <div class="card-container" *ngIf="!!recipes">
+      <div *ngFor="let item of recipes">
+        <div class="mb-4">
+          <recipe-card [data]="item"></recipe-card>
+        </div>
+      </div>
+    </div>
+</div>

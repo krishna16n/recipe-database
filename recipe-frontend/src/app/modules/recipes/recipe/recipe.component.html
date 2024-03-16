@@ -22,6 +22,7 @@
     <mat-card-content>
       <p>{{ recipe.ingredients }}</p>
       <p>{{ recipe.instructions }}</p>
+    <mat-divider></mat-divider>
     </mat-card-content>
     <mat-card-actions *ngIf="isAuthor">
       <button mat-button (click)="action = enumFormAction.update">Edit</button>
