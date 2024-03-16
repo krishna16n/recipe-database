@@ -1,0 +1,34 @@
+<div class="container">
+  <mat-card class="card-container" *ngIf="!!recipe">
+    <ng-container *ngIf="action === enumFormAction.none; else editRecipe">
+      <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+    </ng-container>
+  </mat-card>
+</div>
+
+<ng-template #contentTemplate>
+  <ng-container>
+    <mat-card-header>
+      <mat-card-title>{{ recipe.title }}</mat-card-title>
+      <mat-card-subtitle>{{ recipe.description }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let item of recipe.ingredients">
+          {{ item }}
+        </mat-list-item>
+      </mat-list>
+      <p>{{ recipe.instructions }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="action = enumFormAction.update">Edit</button>
+      <button mat-button (click)="delete()">Delete</button>
+    </mat-card-actions>
+  </ng-container>
+</ng-template>
+
+<ng-template #editRecipe>
+  <app-edit [recipe]="eRecipe" [action]="enumFormAction.update" (actionEmitter)="handleAction()"></app-edit>
+</ng-template>
+
+<pre>{{ recipe | json }}</pre>

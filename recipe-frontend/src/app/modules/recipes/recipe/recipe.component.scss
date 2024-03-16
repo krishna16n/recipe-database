@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Optional: Centers vertically on the page */
+  }
+  
+  .card-container {
+    width: 90%; /* Adjust the width as needed */
+    max-width: 400px; /* Maximum width for larger screens */
+  }
+  
+  mat-card {
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  /* Responsive styles */
+  @media only screen and (min-width: 600px) {
+    .card-container {
+      max-width: 600px; /* Increase the maximum width for larger screens */
+    }
+  }
+  

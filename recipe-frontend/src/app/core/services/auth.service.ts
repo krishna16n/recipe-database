@@ -14,20 +14,10 @@ export class AuthService {
 
 
   signin(payload: any) {
-    return this.http.post(`${this.apiUrl}/auth/signin`, payload, {
-      withCredentials: true,
-    })
+    return this.http.post(`${this.apiUrl}/auth/signin`, payload)
   }
 
   getRecipes(payload: any) {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-
-      withCredentials: true,
-      observe: 'response' as 'response'
-    };
-    return this.http.get(`${this.apiUrl}/recipes`, {
-      withCredentials: true
-    }, );
+    return this.http.get(`${this.apiUrl}/recipes`);
   }
 }

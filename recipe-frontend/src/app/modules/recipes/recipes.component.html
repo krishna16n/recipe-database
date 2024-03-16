@@ -1,0 +1,10 @@
+<mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let item of recipes">
+        {{item.title}} 
+        <a mat-raised-button routerLink="{{item.id}}">Edit</a>
+    </mat-list-item>
+  </mat-list>
+
+
+  <!-- <pre>{{user | json}}</pre>  -->
+<pre>{{recipes | json}}</pre> 
