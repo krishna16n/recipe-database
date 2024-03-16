@@ -80,7 +80,7 @@ export class RecipesService {
             where: { id },
         });
     }
-    
+
     /**
      * Retrieves recipes by user id.
      * @param id - The ID of the user.
@@ -88,11 +88,11 @@ export class RecipesService {
      */
     async getRecipesByUserId(authorId: string) {
         return this.prisma.recipe.findMany({
-          where: {
-            authorId,
-          },
+            where: {
+                authorId,
+            }
         });
-      }
+    }
 
     /**
      * Deletes a recipe by its ID.

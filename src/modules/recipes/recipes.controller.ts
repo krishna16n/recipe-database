@@ -66,7 +66,7 @@ export class RecipesController {
    * @returns The recipe with the specified ID.
    */
   @Get('user/:userId')
-  async getRecipesByUserId(@Param() params: { id: string }) {
-    return this.recipesService.getRecipesByUserId(params.id);
+  async getRecipesByUserId(@Param() params: { userId: string }) {
+    return this.recipesService.getRecipesByUserId(params.userId);
   }
 }
