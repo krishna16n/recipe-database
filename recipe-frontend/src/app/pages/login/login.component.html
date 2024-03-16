@@ -1,19 +1,36 @@
-<div class="parent">
-    <div class="wrapper">
-        <form action="">
-            <h1>Sign In</h1>
-            <div class="input-box">
-                <input type="text" name="email" [(ngModel)]="data.email" placeholder="Username" required>
-                <i class='bx bxs-user'></i>
-            </div>
-            <div class="input-box">
-                <input type="password" name="password" [(ngModel)]="data.password" placeholder="password" required>
-                <i class='bx bxs-lock-alt'></i>
-            </div>
-            <div class="remember-forgot">
-                
-            </div>
-            <button type="button" class="btn" (click)="signin()">Sign In</button>
-        </form>
-    </div>
+<div class="center-container">
+  <div class="c-container">
+    <mat-card class="card-container">
+      <mat-card-header>
+        <mat-card-title>Recipe</mat-card-title>
+      </mat-card-header>
+      <form #recipeForm="ngForm" (ngSubmit)="signin()">
+        <mat-card-content>
+          <mat-form-field class="me-1">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              type="email"
+              name="email"
+              [(ngModel)]="data.email"
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              type="password"
+              name="password"
+              [(ngModel)]="data.password"
+              required
+            />
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit" class="me-2">Sign In</button>
+          <a mat-button type="button" routerLink="/signup">Register</a>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+  </div>
 </div>
