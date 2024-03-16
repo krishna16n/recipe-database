@@ -10,6 +10,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { authInterceptor } from './core/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,7 @@ import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

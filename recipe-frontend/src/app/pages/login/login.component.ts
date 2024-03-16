@@ -28,7 +28,6 @@ export class LoginComponent {
       console.log(data);
       if (data.token) {
         localStorage.setItem('user', JSON.stringify(data.user));
-        localStorage.setItem('token', JSON.stringify(data.token));
         this.router.navigateByUrl('/dashboard');
       }
     }).catch(error => {

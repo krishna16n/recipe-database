@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Subject, tap } from 'rxjs';
 
@@ -10,15 +10,24 @@ export class AuthService {
 
   private apiUrl = 'http://localhost:3000';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) { }
 
-  }
 
   signin(payload: any) {
-    return this.http.post(`${this.apiUrl}/auth/signin`, payload)
+    return this.http.post(`${this.apiUrl}/auth/signin`, payload, {
+      withCredentials: true,
+    })
   }
 
   getRecipes(payload: any) {
-    return this.http.get(`${this.apiUrl}/recipes`);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+
+      withCredentials: true,
+      observe: 'response' as 'response'
+    };
+    return this.http.get(`${this.apiUrl}/recipes`, {
+      withCredentials: true
+    }, );
   }
 }

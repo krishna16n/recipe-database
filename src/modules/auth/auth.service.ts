@@ -88,7 +88,10 @@ export class AuthService {
         delete foundUser.hashedPassword;
 
         // Set the token in a cookie and send a success message
-        res.cookie('token', token);
+        res.cookie('token', token, {
+            httpOnly: true,
+            // expires: new Date(new Date().getTime() + 86409000),
+        });
 
         return res.send({ message: 'Logged in', user: foundUser, token: token });
     }
