@@ -26,7 +26,7 @@ export class LoginComponent {
     const signinPromise = this.authService.signin(this.data).toPromise();
     signinPromise.then((data: any) => {
       console.log(data);
-      if (data.token) {
+      if (data.user) {
         localStorage.setItem('user', JSON.stringify(data.user));
         this.router.navigateByUrl('/dashboard');
       }

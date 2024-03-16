@@ -14,10 +14,6 @@ export class DashboardComponent {
     const prom = this.authService.getRecipes(null).toPromise();
     prom.then((data: any) => {
       console.log(data);
-      // if (data.token) {
-      //   localStorage.setItem('token', JSON.stringify(data));
-      //   this.router.navigateByUrl('/dashboard');
-      // }
     }).catch(error => {
       alert("Invalid credentials")
     })
