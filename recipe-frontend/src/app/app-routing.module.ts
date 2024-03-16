@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { SignupComponent } from './pages/signup/signup.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'signup',
+    component: SignupComponent
+  },
+  {
     path: '',
     component: LayoutComponent,
     children: [
@@ -24,6 +29,10 @@ const routes: Routes = [
       },
       { path: 'recipes', loadChildren: () => import('./modules/recipes/recipes.module').then(m => m.RecipesModule) }
     ]
+  },
+  {
+    path: '**',
+    component: DashboardComponent
   }
 ];
 

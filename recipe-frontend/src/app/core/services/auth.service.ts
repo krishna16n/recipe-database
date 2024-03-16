@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
-import { Subject, tap } from 'rxjs';
+import { UserPayload } from '../../pages/login/login.component';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +12,12 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
 
-  signin(payload: any) {
+  signin(payload: UserPayload) {
     return this.http.post(`${this.apiUrl}/auth/signin`, payload)
+  }
+
+  signup(payload: UserPayload) {
+    return this.http.post(`${this.apiUrl}/auth/signup`, payload)
   }
 
   signout(){

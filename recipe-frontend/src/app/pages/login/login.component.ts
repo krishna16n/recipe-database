@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 
-export interface SigninPayload {
+export interface UserPayload {
   email: string;
   password: string;
 }
@@ -13,7 +13,7 @@ export interface SigninPayload {
 })
 
 export class LoginComponent {
-  data: SigninPayload = {
+  data: UserPayload = {
     email: '',
     password: ''
   };

@@ -1,1 +1,38 @@
-<p>signup works!</p>
+<div class="center-container">
+    <div class="c-container">
+      <mat-card class="card-container">
+        <mat-card-header>
+          <mat-card-title>Recipe</mat-card-title>
+          <mat-card-subtitle>Sign Up</mat-card-subtitle>
+        </mat-card-header>
+        <form #recipeForm="ngForm" (ngSubmit)="signup()">
+          <mat-card-content>
+            <mat-form-field class="me-1">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                type="email"
+                name="email"
+                [(ngModel)]="data.email"
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                type="password"
+                name="password"
+                [(ngModel)]="data.password"
+                required
+              />
+            </mat-form-field>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="accent" type="submit" class="me-2">Register</button>
+            <a mat-button type="button" routerLink="/signin">Sign In</a>
+          </mat-card-actions>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+  
