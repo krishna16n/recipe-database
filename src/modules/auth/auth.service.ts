@@ -84,9 +84,13 @@ export class AuthService {
             throw new ForbiddenException();
         }
 
+        // Remove the hashed password from the user object before returning
+        delete foundUser.hashedPassword;
+
         // Set the token in a cookie and send a success message
         res.cookie('token', token);
-        return res.send({ message: 'Logged in' });
+
+        return res.send({ message: 'Logged in', user: foundUser, token: token });
     }
 
     /**
