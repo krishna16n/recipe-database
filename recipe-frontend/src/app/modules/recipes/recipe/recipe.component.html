@@ -23,7 +23,7 @@
       <p>{{ recipe.ingredients }}</p>
       <p>{{ recipe.instructions }}</p>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions *ngIf="isAuthor">
       <button mat-button (click)="action = enumFormAction.update">Edit</button>
       <button mat-button (click)="delete()">Delete</button>
     </mat-card-actions>
@@ -37,5 +37,3 @@
     (actionEmitter)="handleCancel($event)"
   ></app-edit>
 </ng-template>
-
-<pre>{{ action | json }}</pre>

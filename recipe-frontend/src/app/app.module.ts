@@ -13,6 +13,9 @@ import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/
 import { CookieService } from 'ngx-cookie-service';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -27,11 +30,14 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatListModule,
+    MatButtonModule
   ],
   providers: [
     provideAnimationsAsync(),
-    provideHttpClient(withInterceptors([authInterceptor])) 
+    provideHttpClient(withInterceptors([authInterceptor]))
   ],
   bootstrap: [AppComponent]
 })

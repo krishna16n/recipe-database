@@ -1,3 +1,12 @@
-<p>dashboard works!</p>
-<button type="button" class="btn" (click)="getit()">Recipes</button>
-
+<div class="container">
+    <mat-card class="card-container" *ngIf="!!recipes">
+      <mat-card-content>
+        <mat-list role="list">
+          <mat-list-item role="listitem" *ngFor="let item of recipes">
+            {{ item.title }}
+            <a mat-raised-button routerLink="/recipes/{{ item.id }}">View</a>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>

@@ -25,13 +25,16 @@ export class RecipeComponent implements OnInit {
   eRecipe: any;
   action = FormAction.none;
   enumFormAction = FormAction;
+  user: any;
 
   constructor(
     private recipesService: RecipesService,
     private aRoute: ActivatedRoute,
     public dialog: MatDialog,
     private route: Router,
-  ) { }
+  ) {
+    this.user = JSON.parse(localStorage.getItem('user') as any);
+  }
 
   ngOnInit(): void {
     this.initData();
@@ -86,5 +89,10 @@ export class RecipeComponent implements OnInit {
     if (action = FormAction.update) {
       this.action = FormAction.none;
     }
+  }
+
+  get isAuthor() {
+    if (!this.user) return;
+    return (this.user.id === this.recipe.authorId);
   }
 }
