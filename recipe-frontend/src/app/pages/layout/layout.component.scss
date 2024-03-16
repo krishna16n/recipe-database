@@ -1,0 +1,19 @@
+.navbar-brand {
+    font-weight: bold;
+  }
+  
+  .navbar-nav .nav-link {
+    padding: 0.5rem 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .navbar-nav {
+      flex-direction: column;
+      margin-top: 1rem;
+    }
+  
+    .navbar-nav .nav-link {
+      padding: 0.5rem 0;
+    }
+  }
+  

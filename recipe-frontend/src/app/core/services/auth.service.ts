@@ -17,6 +17,10 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/auth/signin`, payload)
   }
 
+  signout(){
+    return this.http.get(`${this.apiUrl}/auth/signout`);
+  }
+
   getRecipes(payload: any) {
     return this.http.get(`${this.apiUrl}/recipes`);
   }
