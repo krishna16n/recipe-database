@@ -1,6 +1,6 @@
 <ng-container>
   <mat-card-header>
-    <mat-card-title>Edit</mat-card-title>
+    <mat-card-title>{{ title }}</mat-card-title>
   </mat-card-header>
   <form #recipeForm="ngForm" (ngSubmit)="onSubmit(recipeForm)">
     <mat-card-content>
@@ -22,16 +22,15 @@
         ></textarea>
       </mat-form-field>
 
-      <ng-container *ngFor="let item of recipe.ingredients; let i = index">
-        <mat-form-field>
-          <input
-            matInput
-            [(ngModel)]="recipe.ingredients[i]"
-            [name]="'item_' + i"
-          />
-        </mat-form-field>
-      </ng-container>
-
+      <mat-form-field>
+        <textarea
+          matInput
+          placeholder="Ingredients"
+          [(ngModel)]="recipe.ingredients"
+          name="ingredients"
+        ></textarea>
+      </mat-form-field>
+      
       <mat-form-field>
         <textarea
           matInput
@@ -43,9 +42,7 @@
     </mat-card-content>
     <mat-card-actions>
       <button mat-button type="submit">Save</button>
-      <button mat-button type="button" (click)="cancel()">
-        Cancel
-      </button>
+      <button mat-button type="button" (click)="cancel()">Cancel</button>
     </mat-card-actions>
   </form>
 </ng-container>

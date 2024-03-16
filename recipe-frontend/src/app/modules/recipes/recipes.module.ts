@@ -17,7 +17,8 @@ import { EditComponent } from './recipe/components/edit/edit.component';
 
 const routes: Routes = [
   { path: '', component: RecipesComponent },
-  { path: ':id', component: RecipeComponent }
+  { path: ':id', component: RecipeComponent },
+  { path: 'create', component: RecipeComponent }
 ];
 
 @NgModule({

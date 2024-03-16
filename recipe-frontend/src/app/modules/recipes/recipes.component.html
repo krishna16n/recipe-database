@@ -1,10 +1,18 @@
-<mat-list role="list">
-    <mat-list-item role="listitem" *ngFor="let item of recipes">
-        {{item.title}} 
-        <a mat-raised-button routerLink="{{item.id}}">Edit</a>
-    </mat-list-item>
-  </mat-list>
+<div class="container">
+  <mat-card class="card-container" *ngIf="!!recipes">
+    <mat-card-content>
+      <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let item of recipes">
+          {{ item.title }}
+          <a mat-raised-button routerLink="{{ item.id }}">Edit</a>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-raised-button color="primary" routerLink="create">Create</a>
+    </mat-card-actions>
+  </mat-card>
+</div>
 
-
-  <!-- <pre>{{user | json}}</pre>  -->
-<pre>{{recipes | json}}</pre> 
+<!-- <pre>{{user | json}}</pre>  -->
+<pre>{{ recipes | json }}</pre>

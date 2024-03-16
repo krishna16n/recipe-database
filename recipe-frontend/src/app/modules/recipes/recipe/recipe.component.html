@@ -4,6 +4,13 @@
       <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
     </ng-container>
   </mat-card>
+
+  <mat-card class="card-container" *ngIf="!recipe">
+    <app-edit
+      [action]="enumFormAction.create"
+      (actionEmitter)="handleCancel($event)"
+    ></app-edit>
+  </mat-card>
 </div>
 
 <ng-template #contentTemplate>
@@ -13,11 +20,7 @@
       <mat-card-subtitle>{{ recipe.description }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <mat-list role="list">
-        <mat-list-item role="listitem" *ngFor="let item of recipe.ingredients">
-          {{ item }}
-        </mat-list-item>
-      </mat-list>
+      <p>{{ recipe.ingredients }}</p>
       <p>{{ recipe.instructions }}</p>
     </mat-card-content>
     <mat-card-actions>
@@ -28,7 +31,11 @@
 </ng-template>
 
 <ng-template #editRecipe>
-  <app-edit [recipe]="eRecipe" [action]="enumFormAction.update" (actionEmitter)="handleAction()"></app-edit>
+  <app-edit
+    [recipe]="eRecipe"
+    [action]="enumFormAction.update"
+    (actionEmitter)="handleCancel($event)"
+  ></app-edit>
 </ng-template>
 
-<pre>{{ recipe | json }}</pre>
+<pre>{{ action | json }}</pre>

@@ -10,9 +10,8 @@ export class CreateRecipeDto {
   public description: string;
 
   @IsNotEmpty()
-  @IsArray()
-  @IsString({ each: true })
-  public ingredients: string[];
+  @IsString()
+  public ingredients: string;
 
   @IsNotEmpty()
   @IsString()
@@ -33,9 +32,8 @@ export class UpdateRecipeDto {
   public description: string;
 
   @IsNotEmpty()
-  @IsArray()
-  @IsString({ each: true })
-  public ingredients: string[];
+  @IsString()
+  public ingredients: string;
 
   @IsNotEmpty()
   @IsString()

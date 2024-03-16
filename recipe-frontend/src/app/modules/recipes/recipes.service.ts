@@ -24,7 +24,7 @@ export class RecipesService {
   }
 
   createRecipe(payload: Recipe) {
-    return this.http.put(`${this.apiUrl}/recipes/create/`, payload);
+    return this.http.post(`${this.apiUrl}/recipes/create/`, payload);
   }
 
   updateRecipe(recipeId: string, payload: Recipe) {

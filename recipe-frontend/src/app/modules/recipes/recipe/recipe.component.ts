@@ -11,7 +11,8 @@ export interface Recipe {
   description: string;
   ingredients: string[];
   instructions: string;
-  id?: string
+  id?: string;
+  authorId?: string;
 }
 
 @Component({
@@ -22,7 +23,7 @@ export interface Recipe {
 export class RecipeComponent implements OnInit {
   recipe: any;
   eRecipe: any;
-  action: FormAction;
+  action = FormAction.none;
   enumFormAction = FormAction;
 
   constructor(
@@ -78,7 +79,12 @@ export class RecipeComponent implements OnInit {
     });
   }
 
-  handleAction(): void {
-    this.action = FormAction.none;
+  handleCancel(action: FormAction): void {
+    if (action = FormAction.create) {
+      this.route.navigateByUrl('/recipes');
+    }
+    if (action = FormAction.update) {
+      this.action = FormAction.none;
+    }
   }
 }

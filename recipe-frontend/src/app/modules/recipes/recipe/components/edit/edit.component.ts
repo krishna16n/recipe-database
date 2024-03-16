@@ -1,8 +1,8 @@
-import { Component, Input, Output, EventEmitter  } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Recipe } from '../../recipe.component';
 import { NgForm } from '@angular/forms';
 import { RecipesService } from '../../../recipes.service';
-import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 export enum FormAction {
   none = 0,
@@ -22,24 +22,45 @@ export class EditComponent {
 
   @Output() actionEmitter = new EventEmitter();
 
+  user: any;
+
+  get isCreate() {
+    return !!(this.action == FormAction.create);
+  }
+
+  get title() {
+    return (this.isCreate) ? 'Create' : 'Edit';
+  }
+
   constructor(
     private recipesService: RecipesService,
-  ) { }
+    private route: Router,
+  ) {
+    this.recipe = {
+      title: '',
+      description: '',
+      ingredients: [''],
+      instructions: '',
+    }
+
+    this.user = JSON.parse(localStorage.getItem('user') as any);
+  }
 
 
   onSubmit(form: NgForm) {
     if (form.valid) {
       console.log('Recipe saved:', this.recipe);
+
       const payload: Recipe = {
         title: this.recipe.title,
         description: this.recipe.description,
         ingredients: this.recipe.ingredients,
         instructions: this.recipe.instructions,
+        authorId: this.user.id,
       }
 
       if (this.action === FormAction.create) this.createRecipe(payload);
       if (this.action === FormAction.update) this.updateRecipe(payload);
-      this.action = FormAction.none;
     } else {
       // Handle form validation errors
       console.log('Form validation failed.');
@@ -52,9 +73,11 @@ export class EditComponent {
       if (data) {
         this.recipe = data;
         console.log(data);
+        this.action = FormAction.none;
+        this.route.navigateByUrl('/recipes');
       }
     }).catch(error => {
-      alert(error)
+      alert(error.error.message[0])
     })
   }
 
@@ -64,13 +87,15 @@ export class EditComponent {
       if (data) {
         this.recipe = data;
         console.log(data);
+        this.action = FormAction.none;
+        this.route.navigateByUrl('/recipes');
       }
     }).catch(error => {
-      alert(error)
+      alert(error.error.message[0])
     })
   }
 
   cancel() {
-    this.actionEmitter.emit(true);
+    this.actionEmitter.emit(this.action);
   }
 }
