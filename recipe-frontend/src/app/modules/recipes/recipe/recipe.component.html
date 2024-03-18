@@ -31,7 +31,7 @@
           {{ recipe.instructions }}
         </p>
       </div>
-      <mat-divider></mat-divider>
+      <mat-divider *ngIf="isAuthor"></mat-divider>
     </mat-card-content>
     <mat-card-actions *ngIf="isAuthor">
       <button mat-button (click)="action = enumFormAction.update">Edit</button>

@@ -9,15 +9,24 @@ import { AuthService } from '../../core/services/auth.service';
   styleUrl: './signup.component.scss'
 })
 export class SignupComponent {
+  // Data object containing user signup information
   data: UserPayload = {
     email: '',
     password: ''
   };
-
+  // Router instance for navigating between routes
   router = inject(Router);
 
+  /**
+   * Constructs the SignupComponent.
+   * @param authService - The service for managing authentication-related operations.
+   */
   constructor(private authService: AuthService) { }
 
+  /**
+   * Initiates the signup process using provided user information.
+   * Upon successful signup, displays a success message, and navigates to the signin page.
+   */
   signup() {
     const signinPromise = this.authService.signup(this.data).toPromise();
     signinPromise.then((data: any) => {
@@ -31,3 +40,4 @@ export class SignupComponent {
     })
   }
 }
+
