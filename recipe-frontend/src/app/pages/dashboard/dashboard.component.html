@@ -1,5 +1,6 @@
 <div class="container mt-3">
     <div class="card-container" *ngIf="!!recipes">
+      <h1>All Recipes</h1>
       <div *ngFor="let item of recipes">
         <div class="mb-4">
           <recipe-card [data]="item"></recipe-card>

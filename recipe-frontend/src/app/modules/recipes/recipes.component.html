@@ -1,9 +1,12 @@
-<div class="container">
-  <a mat-raised-button routerLink="create" class="mt-4">
-    Add Recipe <mat-icon>post_add</mat-icon>
-  </a>
+<div class="container mt-3">
+  <div class="d-flex align-items-center justify-content-between">
+    <h1 class="mb-0">My Recipes</h1>
+    <a mat-raised-button routerLink="create" class="">
+      Add <mat-icon>post_add</mat-icon>
+    </a>
+  </div>
 
-  <div class="container mt-3">
+  <div class="mt-3">
     <div class="card-container" *ngIf="!!recipes">
       <div *ngFor="let item of recipes">
         <div class="mb-4">

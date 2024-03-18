@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-3">
   <mat-card class="card-container" *ngIf="!!recipe">
     <ng-container *ngIf="action === enumFormAction.none; else editRecipe">
       <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
@@ -35,7 +35,7 @@
     </mat-card-content>
     <mat-card-actions *ngIf="isAuthor">
       <button mat-button (click)="action = enumFormAction.update">Edit</button>
-      <button mat-button (click)="delete()">Delete</button>
+      <button mat-button (click)="delete()" color="warn">Delete</button>
     </mat-card-actions>
   </ng-container>
 </ng-template>
