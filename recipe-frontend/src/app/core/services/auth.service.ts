@@ -2,6 +2,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { UserPayload } from '../../pages/login/login.component';
 
+export interface User {
+  email: string;
+  password: string;
+  id: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,7 +30,7 @@ export class AuthService {
     return this.http.get(`${this.apiUrl}/auth/signout`);
   }
 
-  getRecipes(payload: any) {
+  getRecipes() {
     return this.http.get(`${this.apiUrl}/recipes`);
   }
 }

@@ -3,6 +3,7 @@ import { Recipe } from '../../recipe.component';
 import { NgForm } from '@angular/forms';
 import { RecipesService } from '../../../recipes.service';
 import { Router } from '@angular/router';
+import { User } from '../../../../../core/services/auth.service';
 
 export enum FormAction {
   none = 0,
@@ -22,7 +23,7 @@ export class EditComponent {
 
   @Output() actionEmitter = new EventEmitter();
 
-  user: any;
+  user: User;
 
   get isCreate() {
     return !!(this.action == FormAction.create);
@@ -43,7 +44,7 @@ export class EditComponent {
       instructions: '',
     }
 
-    this.user = JSON.parse(localStorage.getItem('user') as any);
+    this.user = JSON.parse(localStorage.getItem('user') as string);
   }
 
 

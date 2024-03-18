@@ -8,7 +8,6 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(cloneRequest).pipe(
     catchError((error: HttpErrorResponse) => {
-      debugger;
       if (error.status === 401) {
         console.log(error)
       }

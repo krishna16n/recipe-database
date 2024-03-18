@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
+import { Observable, map } from 'rxjs';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-layout',
@@ -9,7 +11,6 @@ import { Router } from '@angular/router';
 })
 export class LayoutComponent {
   isNavbarCollapsed = false;
-
   router = inject(Router);
 
   constructor(private authService: AuthService) { }

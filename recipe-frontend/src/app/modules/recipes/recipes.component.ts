@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipesService } from './recipes.service';
+import { User } from '../../core/services/auth.service';
+import { Recipe } from './recipe/recipe.component';
 
 @Component({
   selector: 'app-recipes',
@@ -8,8 +10,8 @@ import { RecipesService } from './recipes.service';
 })
 export class RecipesComponent implements OnInit {
 
-  user: any;
-  recipes: any;
+  user: User;
+  recipes: Recipe[];
 
   constructor(private recipesService: RecipesService) { }
 

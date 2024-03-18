@@ -7,10 +7,18 @@
     <mat-card-subtitle>{{ data.description }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p>{{ data.ingredients }}</p>
-    <p>
-      {{ data.instructions }}
-    </p>
+    <div>
+      <h3 class="">Ingredients</h3>
+      <p>{{ data.ingredients }}</p>
+    </div>
+    
+    <div>
+      <h3 class="">Instructions</h3>
+      <p>
+        {{ data.instructions }}
+      </p>
+    </div>
+    
     <mat-divider></mat-divider>
   </mat-card-content>
   <mat-card-actions>

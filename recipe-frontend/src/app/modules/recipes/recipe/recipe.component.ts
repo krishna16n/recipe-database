@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../../../shared/confirmation-dialog/confirmation-dialog.component';
 import { FormAction } from './components/edit/edit.component';
+import { User } from '../../../core/services/auth.service';
 
 export interface Recipe {
   title: string;
@@ -21,11 +22,11 @@ export interface Recipe {
   styleUrl: './recipe.component.scss'
 })
 export class RecipeComponent implements OnInit {
-  recipe: any;
-  eRecipe: any;
+  recipe: Recipe;
+  eRecipe: Recipe;
   action = FormAction.none;
   enumFormAction = FormAction;
-  user: any;
+  user: User;
 
   constructor(
     private recipesService: RecipesService,
@@ -33,7 +34,7 @@ export class RecipeComponent implements OnInit {
     public dialog: MatDialog,
     private route: Router,
   ) {
-    this.user = JSON.parse(localStorage.getItem('user') as any);
+    this.user = JSON.parse(localStorage.getItem('user') as string);
   }
 
   ngOnInit(): void {
@@ -67,7 +68,7 @@ export class RecipeComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
-        const prom = this.recipesService.deleteRecipe(this.recipe.id).toPromise();
+        const prom = this.recipesService.deleteRecipe(this.recipe.id as string).toPromise();
         prom.then((data: any) => {
           if (data) {
             alert('Recipe deleted')
